@@ -31,7 +31,7 @@ class FilmController extends AbstractController
 
         if ($films) {
         } else {
-            $url = 'https://swapi.dev/api/films';
+            $url = 'http://swapi.dev/api/films';
             $contents = $this->getJson($url);
             foreach ($contents['results'] as $content) {
                 $film = $filmRepository->findOneBy(['url' => $content['url']]);

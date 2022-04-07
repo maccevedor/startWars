@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block title %} Film{% endblock %}
+    {% block body %}
+    <div class="row">
+        <div class="col col-lg-12">
+            <table class="table espacio">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ film.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Director</th>
+                        <td>{{ film.director }}</td>
+                    </tr>
+                    <tr>
+                        <th>Title</th>
+                        <td>{{ film.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>Realease</th>
+                        <td>{{ film.releaseDate|date('d-m-Y')  }} </td>
+                    </tr>
+                    <tr>
+
+                        <th>Character</th>
+                        <td>
+                        {% for character in film.characters %}
+                        <p><a href="{{ path('character_show', {'id': character.id}) }}">{{ character.name }}</a></p>
+                       {% endfor %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <p><a href="{{ path('film') }}">Films</a></p>
+{% endblock %}
